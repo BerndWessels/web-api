@@ -19,12 +19,12 @@ var morgan = require('morgan');
 var multer = require('multer');
 var path = require('path');
 var request = require('request');
-var serveFavicon = require('serve-favicon');
 
 /**
  * Internal dependencies.
  */
 var config = require('./config');
+var db = require('./db/token/' + config.db.type);
 
 /**
  * Create and configure the api application server.
@@ -62,8 +62,35 @@ app.use(cors());
 /**
  * Protect the API.
  */
-app.use(function (req, res, next) {
-  next();
+app.use('/api/*', function (req, res, next) {
+  // Try to get the Authorization header.
+  var authentication = req.headers.authentication;
+  // Make sure it exists.
+  if (authentication) {
+    // Get the bearer access token from the header.
+    var accessToken = authentication.split(' ')[1];
+    // Try to find the access token.
+    db.accessTokens.find(accessToken, function (err, accesstokendata) {
+      // Deal with errors.
+      if (err) {
+        // HTTP status 401: Unauthorized
+        res.status(401).send('Unauthorized');
+        return;
+      }
+      // Make sure it was found.
+      if (!accesstokendata) {
+        // HTTP status 401: NotFound
+        res.status(401).send('Unauthorized');
+        return;
+      }
+      // API call is authorized.
+      return next();
+    });
+  }
+  else {
+    // HTTP status 401: NotFound
+    res.status(401).send('Unauthorized');
+  }
 });
 
 /**
