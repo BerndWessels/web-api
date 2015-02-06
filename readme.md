@@ -1,10 +1,25 @@
 ## Web Solution Boilerplate Repositories
 
+### Features
+
+- Solution split in 3 independent Projects/Repositiories to give you the flexibility to host and connect them depending on you specific use cases and environments.
+- Your own NodeJS OAuth2 Authorization Server.
+- NodeJS API Resource Server with OAuth2 Authentication Integration.
+- In-memory storage for development and Redis storage for production.
+- Easy to integrate your own storage solution.
+- AngularJS Single Page that can be hosted on a CDN.
+- OAuth2 Authorization and API Access fully integrated in Client SPA.
+- SPA derived from Angular-Fullstack with optimized Grunt Tasks for very convenient development.
+- Optimized Application Structure with opinionated AngularJS implementation for better separation of concerns and better testability.
+- Folder structure follows Page Hierarchy for better code discoverability.
+- Automatic build of different Whitelabels.
+- Automatic versioning, optimization and minification of distribution output.
+
 ### Overview
 
 This is one of three repositories that make up a Web Solution Boilerplate.
 
-Based on this boilerplate it is easy to start a AngularJS Single Page Website that can be hosted on a CDN. It gives you your own OAuth2 Authorization Server and an API Resource Server. Everything is already wired up and ready to go. That means that the SPA and the API are setup to use the Authentication Server. All you need to do is add your own User and Client management to it. Even though the SPA is supposed to be distributed via CDN, for a much more convinient development workflow it has its own local server and grunt tasks. This is all based on Yeoman's Angular Fullstack.
+Based on this boilerplate it is easy to start a AngularJS Single Page Website that can be hosted on a CDN. It gives you your own OAuth2 Authorization Server and an API Resource Server. Everything is already wired up and ready to go. That means that the SPA and the API are setup to use the Authentication Server. All you need to do is add your own User and Client management to it. Even though the SPA is supposed to be distributed via CDN, for a much more convenient development workflow it has its own local server and grunt tasks. This is all based on Yeoman's Angular Fullstack.
 
 ### Getting Started
 
@@ -62,7 +77,7 @@ Install all bower and npm dependencies in the web-site folder.
     npm install
     bower install
 
-On windows, especially in coporate environments you sometimes run into problems. Often it helps to clean the cache `npm cache clear`. Sometimes you just have to repeat the `npm install` command several times until there are no more dependencies missing. If you have trouble getting through your corporate proxy/firewall you can also try the following command:
+On windows, especially in corporate environments you sometimes run into problems. Often it helps to clean the cache `npm cache clear`. Sometimes you just have to repeat the `npm install` command several times until there are no more dependencies missing. If you have trouble getting through your corporate proxy/firewall you can also try the following command:
 
     git config --global url."https://".insteadOf git://
 
